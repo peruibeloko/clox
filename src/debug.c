@@ -14,12 +14,13 @@ static char* RESET_COLOR = "\x1b[m";
 void disassembleChunk(Chunk* chunk, const char* name) {
   printf("%sOFFSET, LINE, OPCODE, OPERANDS%s\n", DARK_GRAY, RESET_COLOR);
   printf("%s== %s ==%s\n", BRIGHT_RED, name, RESET_COLOR);
-
+  
   bool isBright = false;
   for (int offset = 0; offset < chunk->count;) {
     offset = disassembleInstruction(chunk, offset, isBright);
     isBright = !isBright;
   }
+  printf("%s== end %s ==%s\n\n", BRIGHT_RED, name, RESET_COLOR);
 }
 
 static int constantInstruction(const char* name, Chunk* chunk, int offset) {
