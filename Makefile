@@ -3,6 +3,8 @@ src_dir := src
 out_dir := out
 src_files := $(shell $(find) $(src_dir) -name "*.c")
 
+all: clox
+
 clox: $(src_files) | $(out_dir)
 	gcc -g -o $(out_dir)/$@.exe $(src_files)
 
